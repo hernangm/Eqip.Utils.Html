@@ -5,7 +5,7 @@ using HtmlAgilityPack;
 
 namespace Eqip.Utils.Html
 {
-    public class HtmlStringHelper
+    public class HtmlStringHelper 
     {
         private HtmlDocument _document { get; set; }
         private List<string> WhiteListedTags { get; set; }
@@ -17,7 +17,7 @@ namespace Eqip.Utils.Html
         private bool _removeNonPrintableCharacters { get; set; }
         private bool _removeJavaScript { get; set; }
         private bool _removeMultipleSpaces { get; set; }
-
+        private bool _encode { get; set; }
 
         public HtmlStringHelper(string source)
         {
@@ -76,10 +76,10 @@ namespace Eqip.Utils.Html
         #endregion
 
 
-        public HtmlStringHelper StripTags()
-        {
-            return this;
-        }
+        //public HtmlStringHelper StripTags()
+        //{
+        //    return this;
+        //}
 
         public HtmlStringHelper StripTags(IEnumerable<string> whitelist)
         {
@@ -97,10 +97,10 @@ namespace Eqip.Utils.Html
             return this;
         }
 
-        public HtmlStringHelper StripAttributes()
-        {
-            return this;
-        }
+        //public HtmlStringHelper StripAttributes()
+        //{
+        //    return this;
+        //}
 
         public HtmlStringHelper StripAttributes(IEnumerable<string> whitelist)
         {
@@ -115,12 +115,18 @@ namespace Eqip.Utils.Html
             return this;
         }
 
+        public HtmlStringHelper Encode()
+        {
+            this._encode = true;
+            return this;
+        }
 
         public override string ToString()
         {
             SanitizeNode(_document.DocumentNode);
             var output = _removeNonPrintableCharacters ? RemoveNonPrintableCharacters(_document.DocumentNode.WriteTo()) : _document.DocumentNode.WriteTo();
             output = _removeMultipleSpaces ? RemoveMultipleSpaces(output) : output;
+            output = _encode ? HtmlEntity.DeEntitize(output) : output;
             return output;
         }
 

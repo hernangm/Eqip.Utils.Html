@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
@@ -13,6 +13,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("1.0.0.*")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: AssemblyInformationalVersion("1.0.0")]
+[assembly: AssemblyVersion("1.0.6.*")]
+[assembly: AssemblyFileVersion("1.0.6.27076")]
+[assembly: AssemblyInformationalVersion("1.0.6")]

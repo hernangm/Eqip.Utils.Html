@@ -1,0 +1,9 @@
+*.nuspec
+packages/
+release/
+[Oo]bj
+[Bb]in
+*.suo
+*.user
+tools/.nunit_trash/
+TestResults/
